@@ -8,10 +8,24 @@ export default class CategoryList extends Component {
     categories: [
       { categroyId: 1, categoryName: 'Beverages' },
       { categroyId: 2, categoryName: 'Condiments' },
-      { categroyId: 3, categoryName: 'Beverages' },
-      { categroyId: 4, categoryName: 'Beverages' },
-      { categroyId: 5, categoryName: 'Beverages' },
+      { categroyId: 3, categoryName: 'Mocco' },
+      { categroyId: 4, categoryName: 'Champaine' },
+      { categroyId: 5, categoryName: 'Latte' },
     ],
+
+    currentCategory: ''
+
+  }
+
+  handleClick = (item) => {
+
+    this.setState({currentCategory:  item.categoryName})
+
+    // const checker = document.querySelector('#categoryCheck');
+
+    // checker.textContent = '';
+
+    // checker.append(e.target.textContent)
 
   }
 
@@ -24,10 +38,12 @@ export default class CategoryList extends Component {
         <h3>{this.state.counter}</h3>
         <ListGroup numbered>
           {this.state.categories.map((item) => (
-            <ListGroupItem key={item.categroyId}>
+            <ListGroupItem key={item.categroyId} onClick={() => this.handleClick(item)} >
               {item.categoryName}
             </ListGroupItem>
           ))}
+
+          <h4 id='categoryCheck'>{this.state.currentCategory}</h4>
 
         </ListGroup>
 
