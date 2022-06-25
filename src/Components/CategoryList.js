@@ -6,7 +6,7 @@ export default class CategoryList extends Component {
   render() {
     return (
       <div>
-        <h3>Category List</h3>
+        <h3>{this.props.title}</h3>
         <ListGroup
           numbered
         >
