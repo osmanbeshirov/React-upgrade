@@ -8,8 +8,8 @@ import ProductList from './Components/ProductList';
 
 function App() {
 
-  let titleCategory = 'Category List';
-  let titleProduct = 'Product List';
+  let categoryInfo = {title:"Category List", otherThing: "Another List" } ;
+  let productInfo = {title: "Product List"}; 
 
 
   return (
@@ -22,11 +22,11 @@ function App() {
 
         <Row>
           <Col xs='3'>
-            <CategoryList title = {titleCategory}/>
+            <CategoryList info = {categoryInfo}/>
           </Col>
 
           <Col xs='9'>
-            <ProductList title = {titleProduct} />
+            <ProductList info = {productInfo} />
           </Col>
 
 
