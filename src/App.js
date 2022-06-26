@@ -8,11 +8,24 @@ import ProductList from './Components/ProductList';
 export default class App extends Component {
 
   state = {
-    currentCategory: ''
+    currentCategory: '',
+    products: []
+
   }
 
   handleClick = (item) => {
     this.setState({ currentCategory: item.categoryName })
+  }
+
+
+  getProducts = () => {
+    fetch('http://localhost:3000/products')
+      .then(res => res.json())
+      .then(data => this.setState({ products: data }))
+  }
+
+  componentDidMount(){
+    this.getProducts();
   }
 
   render() {
@@ -30,11 +43,11 @@ export default class App extends Component {
 
           <Row>
             <Col xs='3'>
-              <CategoryList info={categoryInfo} current = {this.state.currentCategory} changeCategory={this.handleClick} />
+              <CategoryList info={categoryInfo} current={this.state.currentCategory} changeCategory={this.handleClick} />
             </Col>
 
             <Col xs='9'>
-              <ProductList info={productInfo} current = {this.state.currentCategory} />
+              <ProductList info={productInfo} products={this.state.products} current={this.state.currentCategory} />
             </Col>
 
           </Row>
