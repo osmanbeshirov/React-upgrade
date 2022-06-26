@@ -14,12 +14,20 @@ export default class App extends Component {
   }
 
   handleClick = (item) => {
-    this.setState({ currentCategory: item.categoryName })
+    this.setState({ currentCategory: item.categoryName });
+
+    this.getProducts(item.id)
   }
 
 
-  getProducts = () => {
-    fetch('http://localhost:3000/products')
+  getProducts = (categoryId) => {
+
+    let url = 'http://localhost:3000/products';
+
+    if(categoryId){
+      url += '?categoryId='+categoryId
+    }
+    fetch(url)
       .then(res => res.json())
       .then(data => this.setState({ products: data }))
   }

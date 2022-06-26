@@ -14,21 +14,11 @@ export default class ProductList extends Component {
         >
           <thead>
             <tr>
-              <th>
-                ID
-              </th>
-              <th>
-                Product Name
-              </th>
-              <th>
-                Quantity number
-              </th>
-              <th>
-                Price
-              </th>
-              <th>
-                Stock number
-              </th>
+              <th>ID</th>
+              <th>Product Name</th>
+              <th>Quantity number</th>
+              <th>Price</th>
+              <th>Stock number</th>
             </tr>
           </thead>
           <tbody>
