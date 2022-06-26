@@ -1,12 +1,22 @@
 import React, { Component } from 'react';
 
-import { Table } from 'reactstrap'
+import { Table, Button } from 'reactstrap'
+
 
 export default class ProductList extends Component {
+
+  
+
+
   render() {
     return (
       <div>
-        <h3>{this.props.info.title} --- {this.props.current}</h3>
+        <div className='head' style={{ display: 'flex' }}>
+          <h3>{this.props.info.title}</h3>
+
+          {this.props.isActive ? <h3 style={{ color: 'green', fontStyle: 'italic' }}> ---  {this.props.current}</h3> : null}
+        </div>
+
 
         <Table
           hover
@@ -19,6 +29,7 @@ export default class ProductList extends Component {
               <th>Quantity number</th>
               <th>Price</th>
               <th>Stock number</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -40,7 +51,14 @@ export default class ProductList extends Component {
                   <td>
                     {product.unitsInStock}
                   </td>
+                  <td> <Button onClick={() =>  this.props.basket(product)}
+                    color="primary"
+                  >
+                    Add to Basket
+                  </Button></td>
+                 
                 </tr>
+
               ))
             }
 

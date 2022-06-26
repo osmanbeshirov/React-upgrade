@@ -2,21 +2,43 @@ import { Component } from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import './App.css';
 import CategoryList from './Components/CategoryList';
-import Navbar from './Components/Navbar';
+import Navi from './Components/Navi';
 import ProductList from './Components/ProductList';
 
 export default class App extends Component {
 
   state = {
     currentCategory: '',
-    products: []
+    products: [],
+    isActive: false,
+    choosenProduct: []
 
   }
 
   handleClick = (item) => {
     this.setState({ currentCategory: item.categoryName });
+    this.setState({ isActive: true })
 
     this.getProducts(item.id)
+  }
+
+  addToBasket = (productArr) => {
+    let choosenArr = this.state.choosenProduct;
+
+    let addedItem = choosenArr.find(item => item.product.id === productArr.id);
+
+    if (addedItem) {
+      addedItem.quantity += 1;
+    }
+
+    else {
+      choosenArr.push({ product: productArr, quantity: 1 });
+    }
+
+    this.setState({ choosenProduct: choosenArr });
+
+
+    console.log(this.state.choosenProduct)
   }
 
 
@@ -24,15 +46,15 @@ export default class App extends Component {
 
     let url = 'http://localhost:3000/products';
 
-    if(categoryId){
-      url += '?categoryId='+categoryId
+    if (categoryId) {
+      url += '?categoryId=' + categoryId
     }
     fetch(url)
       .then(res => res.json())
       .then(data => this.setState({ products: data }))
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.getProducts();
   }
 
@@ -45,17 +67,19 @@ export default class App extends Component {
       <div className="App">
 
         <Container>
-          <Row>
-            <Navbar />
-          </Row>
+
+          <Navi choosen={this.state.choosenProduct} />
 
           <Row>
             <Col xs='3'>
-              <CategoryList info={categoryInfo} current={this.state.currentCategory} changeCategory={this.handleClick} />
+              <CategoryList info={categoryInfo} current={this.state.currentCategory} changeCategory={this.handleClick}
+              />
             </Col>
 
             <Col xs='9'>
-              <ProductList info={productInfo} products={this.state.products} current={this.state.currentCategory} />
+              <ProductList info={productInfo} products={this.state.products} current={this.state.currentCategory}
+                isActive={this.state.isActive} basket={this.addToBasket}
+              />
             </Col>
 
           </Row>
