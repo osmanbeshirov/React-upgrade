@@ -54,6 +54,8 @@ export default class App extends Component {
     this.setState({ choosenProduct: newCart }, () => {
       console.log(this.state.choosenProduct);
     });
+
+    alertify.error(product.product.productName + '-' + 'Removed from basket');
   }
 
   resetToBasket = () => {

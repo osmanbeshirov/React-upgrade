@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
+import basketPng from '../photos/shopping-cart.png'
 
 import {
 
@@ -37,7 +38,9 @@ export default class CartSummary extends Component {
                     <DropdownItem divider />
 
                     <DropdownItem>
-                        <Link to ='cart'>Go to Basket</Link>
+                        <Link to ='cart' style={{textDecoration: 'none', color: '#000'}}>
+                            <img width={'25px'} style={{marginRight: '10px'}} src={basketPng}></img>
+                              Go to Basket</Link>
                     </DropdownItem>
 
                     <DropdownItem onClick={() => this.props.reset()}>

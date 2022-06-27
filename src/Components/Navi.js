@@ -7,6 +7,8 @@ import {
 } from 'reactstrap';
 import CartSummary from './CartSummary';
 
+import {Link} from 'react-router-dom'
+
 export default class Navi extends Component {
   render() {
     return (
@@ -27,8 +29,8 @@ export default class Navi extends Component {
                 navbar
               >
                 <NavItem>
-                  <NavLink href="/components/">
-                    Components
+                  <NavLink>
+                    <Link style={{textDecoration: 'none', color: '#000'}} to='/'>Main</Link>
                   </NavLink>
                 </NavItem>
                 <NavItem>
