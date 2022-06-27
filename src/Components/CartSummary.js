@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom'
 
 import {
 
@@ -21,7 +22,6 @@ export default class CartSummary extends Component {
                     Basket - {this.props.cart.length}
                 </DropdownToggle>
                 <DropdownMenu end>
-
                     {
                         this.props.cart.map((product) => (
                             <DropdownItem key={product.product.id}>
@@ -29,23 +29,22 @@ export default class CartSummary extends Component {
 
                                 <Badge color="success" style={{ marginLeft: '10px' }} pill > {product.quantity}</Badge>
 
-
-                                
-                                
-                                    <Badge onClick={() => this.props.remove(product)} style={{ marginLeft: '15px'}} color="danger">Remove</Badge>
-                                
-
-
-
+                                <Badge onClick={() => this.props.remove(product)} style={{ marginLeft: '15px'}} color="danger">Remove</Badge>
                             </DropdownItem>
                         ))
-
                     }
 
                     <DropdownItem divider />
+
+                    <DropdownItem>
+                        <Link to ='cart'>Go to Basket</Link>
+                    </DropdownItem>
+
                     <DropdownItem onClick={() => this.props.reset()}>
                         Reset
                     </DropdownItem>
+
+
                 </DropdownMenu>
             </UncontrolledDropdown>
         )

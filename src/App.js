@@ -4,8 +4,11 @@ import './App.css';
 import CategoryList from './Components/CategoryList';
 import Navi from './Components/Navi';
 import ProductList from './Components/ProductList';
+import { Routes, Route } from 'react-router-dom'
 
 import alertify from 'alertifyjs';
+import NotFound from './Components/NotFound';
+import CartList from './Components/CartList';
 
 export default class App extends Component {
 
@@ -38,8 +41,6 @@ export default class App extends Component {
     }
     this.setState({ choosenProduct: choosenArr });
 
-
-
     alertify.set('notifier', 'position', 'top-right');
 
     alertify.notify(productArr.productName + '-' + 'Added to Basket');
@@ -53,8 +54,6 @@ export default class App extends Component {
     this.setState({ choosenProduct: newCart }, () => {
       console.log(this.state.choosenProduct);
     });
-
-
   }
 
   resetToBasket = () => {
@@ -97,9 +96,22 @@ export default class App extends Component {
             </Col>
 
             <Col xs='9'>
-              <ProductList info={productInfo} products={this.state.products} current={this.state.currentCategory}
-                isActive={this.state.isActive} basket={this.addToBasket}
-              />
+              <Routes>
+                <Route path='/' element={
+                  <ProductList info={productInfo} products={this.state.products} current={this.state.currentCategory}
+                    isActive={this.state.isActive} basket={this.addToBasket}
+                  />
+                }></Route>
+                <Route path='/cart' element={
+                <CartList cart = {this.state.choosenProduct} remove = {this.removeFromCart}/>
+                
+                }></Route>
+                <Route path='*' element={<NotFound />}></Route>
+              </Routes>
+
+
+
+
             </Col>
 
           </Row>

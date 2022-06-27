@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'alertifyjs/build/css/alertify.min.css'
+import { BrowserRouter } from 'react-router-dom';
 
 
 
@@ -11,7 +12,10 @@ import 'alertifyjs/build/css/alertify.min.css'
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+
   </React.StrictMode>
 );
 
