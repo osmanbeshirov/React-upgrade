@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import {
 
     UncontrolledDropdown, DropdownToggle, DropdownMenu,
-    DropdownItem, Badge, NavItem, NavLink
+    DropdownItem, Badge, NavItem, NavLink, Button
 } from 'reactstrap';
 
 export default class CartSummary extends Component {
@@ -30,13 +30,20 @@ export default class CartSummary extends Component {
                                 <Badge color="success" style={{ marginLeft: '10px' }} pill > {product.quantity}</Badge>
 
 
+                                
+                                
+                                    <Badge onClick={() => this.props.remove(product)} style={{ marginLeft: '15px'}} color="danger">Remove</Badge>
+                                
+
+
+
                             </DropdownItem>
                         ))
 
                     }
 
                     <DropdownItem divider />
-                    <DropdownItem>
+                    <DropdownItem onClick={() => this.props.reset()}>
                         Reset
                     </DropdownItem>
                 </DropdownMenu>
@@ -47,7 +54,7 @@ export default class CartSummary extends Component {
     render() {
         return (
             <div>
-              {this.props.cart.length>0?this.renderSummary(): <NavItem> <NavLink>Basket is empty</NavLink></NavItem>}
+                {this.props.cart.length > 0 ? this.renderSummary() : <NavItem> <NavLink>Basket is empty</NavLink></NavItem>}
             </div>
         )
     }

@@ -41,6 +41,20 @@ export default class App extends Component {
     console.log(this.state.choosenProduct)
   }
 
+  removeFromCart = (product) => {
+    let newCart = this.state.choosenProduct.filter(item => item.product.id !== product.product.id);
+
+    this.setState({ choosenProduct: newCart }, () => {
+      console.log(this.state.choosenProduct);
+    });
+
+
+  }
+
+  resetToBasket = () => {
+    this.setState({ choosenProduct: [] })
+  }
+
 
   getProducts = (categoryId) => {
 
@@ -68,7 +82,7 @@ export default class App extends Component {
 
         <Container>
 
-          <Navi choosen={this.state.choosenProduct} />
+          <Navi choosen={this.state.choosenProduct} remove={this.removeFromCart}  reset = {this.resetToBasket}/>
 
           <Row>
             <Col xs='3'>

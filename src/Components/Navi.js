@@ -21,7 +21,7 @@ export default class Navi extends Component {
               FavourApp
             </NavbarBrand>
             <NavbarToggler onClick={function noRefCheck() { }} />
-            <Collapse navbar style={{ marginLeft: '55%' }}>
+            <Collapse navbar style={{ marginLeft: '45%' }}>
               <Nav
                 className="me-auto"
                 navbar
@@ -36,7 +36,7 @@ export default class Navi extends Component {
                     GitHub
                   </NavLink>
                 </NavItem>
-                <CartSummary cart = {this.props.choosen}/>
+                <CartSummary cart = {this.props.choosen} remove = {this.props.remove} reset = {this.props.reset}/>
               </Nav>
 
             </Collapse>
