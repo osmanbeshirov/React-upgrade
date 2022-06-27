@@ -5,6 +5,8 @@ import CategoryList from './Components/CategoryList';
 import Navi from './Components/Navi';
 import ProductList from './Components/ProductList';
 
+import alertify from 'alertifyjs';
+
 export default class App extends Component {
 
   state = {
@@ -34,11 +36,15 @@ export default class App extends Component {
     else {
       choosenArr.push({ product: productArr, quantity: 1 });
     }
-
     this.setState({ choosenProduct: choosenArr });
 
 
-    console.log(this.state.choosenProduct)
+
+    alertify.set('notifier', 'position', 'top-right');
+
+    alertify.notify(productArr.productName + '-' + 'Added to Basket');
+
+
   }
 
   removeFromCart = (product) => {
@@ -82,7 +88,7 @@ export default class App extends Component {
 
         <Container>
 
-          <Navi choosen={this.state.choosenProduct} remove={this.removeFromCart}  reset = {this.resetToBasket}/>
+          <Navi choosen={this.state.choosenProduct} remove={this.removeFromCart} reset={this.resetToBasket} />
 
           <Row>
             <Col xs='3'>
