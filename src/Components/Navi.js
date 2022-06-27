@@ -5,6 +5,7 @@ import {
   Nav, NavItem, NavLink, UncontrolledDropdown, DropdownToggle, DropdownMenu,
   DropdownItem, NavbarText
 } from 'reactstrap';
+import CartSummary from './CartSummary';
 
 export default class Navi extends Component {
   render() {
@@ -35,36 +36,7 @@ export default class Navi extends Component {
                     GitHub
                   </NavLink>
                 </NavItem>
-                <UncontrolledDropdown
-                  inNavbar
-                  nav
-                >
-                  <DropdownToggle
-                    caret
-                    nav
-                  >
-                    Basket - {this.props.choosen.length}
-                  </DropdownToggle>
-                  <DropdownMenu end>
-
-                    {
-                      this.props.choosen.map((productArr) => (
-                        <DropdownItem key={productArr.product.id}>
-                          {productArr.product.productName} - {productArr.quantity}
-                        </DropdownItem>
-                      ))
-
-                    }
-
-
-
-
-                    <DropdownItem divider />
-                    <DropdownItem>
-                      Reset
-                    </DropdownItem>
-                  </DropdownMenu>
-                </UncontrolledDropdown>
+                <CartSummary cart = {this.props.choosen}/>
               </Nav>
 
             </Collapse>
