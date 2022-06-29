@@ -91,7 +91,7 @@ export default class App extends Component {
         <Container>
 
           <Navi choosen={this.state.choosenProduct} remove={this.removeFromCart} reset={this.resetToBasket} />
-          <FormDemo/>
+          
           <Row>
             <Col xs='3'>
               <CategoryList info={categoryInfo} current={this.state.currentCategory} changeCategory={this.handleClick}
@@ -112,9 +112,6 @@ export default class App extends Component {
                 <Route path='/form' element = {<FormDemo/>}></Route>
                 <Route path='*' element={<NotFound />}></Route>
               </Routes>
-
-
-
 
             </Col>
 
