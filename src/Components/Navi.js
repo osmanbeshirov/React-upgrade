@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 
 import {
   Navbar, NavbarBrand, NavbarToggler, Collapse,
-  Nav, NavItem, NavLink, UncontrolledDropdown, DropdownToggle, DropdownMenu,
-  DropdownItem, NavbarText
+  Nav, NavItem, NavLink, 
 } from 'reactstrap';
 import CartSummary from './CartSummary';
 
@@ -35,7 +34,7 @@ export default class Navi extends Component {
                 </NavItem>
                 <NavItem>
                   <NavLink href="https://github.com/reactstrap/reactstrap">
-                    GitHub
+                   <Link style={{textDecoration: 'none', color: '#000'}} to='form'>Form demo</Link> 
                   </NavLink>
                 </NavItem>
                 <CartSummary cart = {this.props.choosen} remove = {this.props.remove} reset = {this.props.reset}/>

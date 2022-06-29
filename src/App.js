@@ -9,6 +9,7 @@ import { Routes, Route } from 'react-router-dom'
 import alertify from 'alertifyjs';
 import NotFound from './Components/NotFound';
 import CartList from './Components/CartList';
+import FormDemo from './Components/FormDemo';
 
 export default class App extends Component {
 
@@ -90,7 +91,7 @@ export default class App extends Component {
         <Container>
 
           <Navi choosen={this.state.choosenProduct} remove={this.removeFromCart} reset={this.resetToBasket} />
-
+          <FormDemo/>
           <Row>
             <Col xs='3'>
               <CategoryList info={categoryInfo} current={this.state.currentCategory} changeCategory={this.handleClick}
@@ -108,6 +109,7 @@ export default class App extends Component {
                 <CartList cart = {this.state.choosenProduct} remove = {this.removeFromCart}/>
                 
                 }></Route>
+                <Route path='/form' element = {<FormDemo/>}></Route>
                 <Route path='*' element={<NotFound />}></Route>
               </Routes>
 
