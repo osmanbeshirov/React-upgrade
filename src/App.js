@@ -11,6 +11,8 @@ import NotFound from './Components/NotFound';
 import CartList from './Components/CartList';
 import FormDemo from './Components/FormDemo';
 
+import Form2 from './Components/Form2';
+
 export default class App extends Component {
 
   state = {
@@ -109,7 +111,8 @@ export default class App extends Component {
                 <CartList cart = {this.state.choosenProduct} remove = {this.removeFromCart}/>
                 
                 }></Route>
-                <Route path='/form' element = {<FormDemo/>}></Route>
+                {/* <Route path='/form' element = {<FormDemo/>}></Route> */}
+                <Route path='/form' element = {<Form2/>}></Route>
                 <Route path='*' element={<NotFound />}></Route>
               </Routes>
 

@@ -33,9 +33,12 @@ export default class Navi extends Component {
                   </NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink href="https://github.com/reactstrap/reactstrap">
-                   <Link style={{textDecoration: 'none', color: '#000'}} to='form'>Form demo</Link> 
+                  <NavLink>
+                   <Link style={{textDecoration: 'none', color: '#000'}} to='form'>Form</Link> 
                   </NavLink>
+                  {/* <NavLink>
+                   <Link style={{textDecoration: 'none', color: '#000'}} to='form'>Form demo</Link> 
+                  </NavLink> */}
                 </NavItem>
                 <CartSummary cart = {this.props.choosen} remove = {this.props.remove} reset = {this.props.reset}/>
               </Nav>
